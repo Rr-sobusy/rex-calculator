@@ -1,0 +1,14 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+.__main-container {
+  @apply h-screen w-screen bg-[#FFB178]
+}
+
+.__box-shadow {
+  background-color:#FFF;
+  padding:20px;
+  box-shadow: 0 0 10px #000000;
+}
+
