@@ -1,9 +1,15 @@
+@import url('https://fonts.googleapis.com/css2?family=Borel&family=Handjet:wght@400;800&family=Poppins:wght@300&display=swap');
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: 'Poppins';
+  src: url('https://fonts.googleapis.com/css2?family=Borel&family=Handjet:wght@400;800&family=Poppins:wght@300&display=swap');
+}
+
 .__main-container {
-  @apply h-screen w-screen bg-[#FFB178]
+  @apply h-screen w-screen bg-gradient-to-r from-orange-300 to-orange-500
 }
 
 .__box-shadow {
