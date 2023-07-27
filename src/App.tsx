@@ -7,7 +7,7 @@ function App() {
       <div className="__main-container grid justify-center items-center">
         <div className="h-[500px] w-[320px]">
           <div className="grid h-full">
-            <div className="bg-[#243441] rounded-t-lg">randy</div>
+            <div className="bg-[#243441] rounded-t-[15px]">randy</div>
             <Calculator />
           </div>
         </div>
