@@ -2,9 +2,28 @@ import React from "react";
 import { FaDivide, FaEquals, FaAsterisk } from "react-icons/fa";
 import { FiMinus } from "react-icons/fi";
 import { AiOutlinePlus } from "react-icons/ai";
-type Props = {};
+type Props = {
+  handleKeyPress: any
+};
 
-const Calculator: React.FC<Props> = () => {
+const Calculator: React.FC<Props> = ({handleKeyPress}) => {
+  React.useEffect(() => {
+    // const handleKeyPress = (event: any) => {
+    //   // Check the key that was pressed
+    //   const pressedKey = event.key;
+    //   if (/^\d$/.test(pressedKey)) {
+    //     // Handle number key press
+    //     console.log("Number key pressed:", pressedKey);
+    //     // You can perform any specific actions for number keys here
+    //   }
+    // };
+
+    document.addEventListener("keydown", handleKeyPress);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyPress);
+    };
+  });
   return (
     <>
       <div className="__calc-mainWrapper">
