@@ -47,7 +47,7 @@ const Calculator: React.FC<Props> = () => {
             key={key}
             className={`grid justify-center ${
               key === 2 ? "col-span-2 text-orange-500" : null
-            } overLine items-center text-slate-400 bg-[#243441] customShadow rounded-lg`}
+            } overLine items-center active:scale-110 duration-200 text-slate-400 bg-[#243441] customShadow rounded-lg`}
           >
             {val}
           </button>
