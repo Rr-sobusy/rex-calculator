@@ -1,23 +1,21 @@
 import React from "react";
 import { FaDivide, FaEquals, FaAsterisk } from "react-icons/fa";
 import { FiMinus } from "react-icons/fi";
-import { AiOutlinePlus } from "react-icons/ai";
+import { AiOutlinePlus, AiOutlineCloseCircle } from "react-icons/ai";
 type Props = {
-  handleKeyPress: any
+  handleKeyPress: any;
+  handleClear: () => void;
+  handlePop: () => void;
+  handleNumberPress: (e: Number) => void;
 };
 
-const Calculator: React.FC<Props> = ({handleKeyPress}) => {
+const Calculator: React.FC<Props> = ({
+  handleKeyPress,
+  handleClear,
+  handlePop,
+  handleNumberPress,
+}) => {
   React.useEffect(() => {
-    // const handleKeyPress = (event: any) => {
-    //   // Check the key that was pressed
-    //   const pressedKey = event.key;
-    //   if (/^\d$/.test(pressedKey)) {
-    //     // Handle number key press
-    //     console.log("Number key pressed:", pressedKey);
-    //     // You can perform any specific actions for number keys here
-    //   }
-    // };
-
     document.addEventListener("keydown", handleKeyPress);
 
     return () => {
@@ -27,8 +25,23 @@ const Calculator: React.FC<Props> = ({handleKeyPress}) => {
   return (
     <>
       <div className="__calc-mainWrapper">
-        {["AC", "_", "_", <FaDivide size={15} />].map((val, key) => (
+        {[
+          "AC",
+          <AiOutlineCloseCircle size={18} />,
+          "_",
+          <FaDivide size={15} />,
+        ].map((val, key) => (
           <button
+            onClick={() => {
+              switch (key) {
+                case 0:
+                  handleClear();
+                  break;
+                case 1:
+                  handlePop();
+                  break;
+              }
+            }}
             key={key}
             className={`bg-[#243441] text-orange-500 active:scale-110 duration-200 overLine customShadow rounded-lg shadow-2xl grid justify-center cursor-pointer items-center font-sans font-semibold`}
           >
@@ -37,6 +50,11 @@ const Calculator: React.FC<Props> = ({handleKeyPress}) => {
         ))}
         {[7, 8, 9, <FaAsterisk size={14} color="#F97316" />].map((val, key) => (
           <button
+            onClick={() => {
+              if (key !== 3) {
+                handleNumberPress(Number(val));
+              }
+            }}
             key={key}
             className={`bg-[#243441]  text-slate-400 active:scale-110 duration-200 overLine customShadow grid justify-center cursor-pointer items-center rounded-lg shadow-lg`}
           >
@@ -45,6 +63,11 @@ const Calculator: React.FC<Props> = ({handleKeyPress}) => {
         ))}
         {[4, 5, 6, <FiMinus size={18} color="#F97316" />].map((val, key) => (
           <button
+            onClick={() => {
+              if (key !== 3) {
+                handleNumberPress(Number(val));
+              }
+            }}
             key={key}
             className="bg-[#243441] text-slate-400  customShadow active:scale-110 duration-200 overLine grid justify-center cursor-pointer items-center rounded-lg shadow-lg"
           >
@@ -54,6 +77,11 @@ const Calculator: React.FC<Props> = ({handleKeyPress}) => {
         {[1, 2, 3, <AiOutlinePlus size={20} color="#F97316" />].map(
           (val, key) => (
             <button
+              onClick={() => {
+                if (key !== 3) {
+                  handleNumberPress(Number(val));
+                }
+              }}
               key={key}
               className="bg-[#243441] text-slate-400 customShadow active:scale-110 duration-200 overLine grid justify-center cursor-pointer items-center rounded-lg shadow-lg"
             >
